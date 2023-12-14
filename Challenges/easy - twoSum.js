@@ -2,15 +2,13 @@ function twoSum(nums, target) {
     const hash = {};
 
     for (let i = 0; i < nums.length; i++) {
-        const currentNum = nums[i];
-        const complement = target - currentNum;
+        const complement = target - nums[i];
 
-        if (hash[complement] !== undefined) {
-            const complementIndex = hash[complement];
-            return [complementIndex, i];
+        if (hash[complement] !== undefined && hash[complement] !== i) {
+            return [hash[complement], i];
         }
 
-        hash[currentNum] = i;
+        hash[nums[i]] = i;
     }
 
     return [];
