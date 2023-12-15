@@ -1,6 +1,6 @@
-log2(8) = 3  -->  2^3 = 8
+log2(8) = 3  //  2^3 = 8
 
-log2(value) = exponent --> 2 exponent = value
+log2(value) = exponent // 2(exponent) = value
 
 // Not a math course, so here's a rule of thumb
 
