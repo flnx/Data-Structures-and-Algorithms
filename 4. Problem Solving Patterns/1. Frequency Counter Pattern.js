@@ -33,7 +33,7 @@ function same(arr1, arr2) {
         map2[freqNum] = (map2[freqNum] || 0) + 1;
     }
 
-    for (key in map1) {
+    for (let key in map1) {
         if (map2[key] !== map1[key]) {
             return false;
         }
@@ -50,7 +50,7 @@ const arr2 = [4, 1, 9];
 const arr3 = [1, 2, 3];
 const arr4 = [1, 9];
 
-// true
+// false
 const arr5 = [1, 2, 1];
 const arr6 = [4, 4, 1];
 
