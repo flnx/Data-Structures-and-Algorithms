@@ -55,3 +55,30 @@ console.log(result3); // false
 console.log(result4); // false
 console.log(result5); // true
 console.log(result6); // true
+
+
+// More efficient solution in terms of space complexity
+function validAnagram2(str1, str2) {
+    if (!isInputValid()) {
+        return false;
+    }
+
+    const charCount = {};
+
+    for (const char of str1) {
+        charCount[char] = (charCount[char] || 0) + 1;
+    }
+
+    for (const char of str2) {
+        if (!charCount[char]) {
+            return false;
+        }
+        charCount[char]--;
+    }
+
+    return true;
+
+    function isInputValid() {
+        return typeof str1 === 'string' && typeof str2 === 'string' && str1.length === str2.length;
+    }
+}
