@@ -29,10 +29,8 @@ function same(arr1, arr2) {
 
         if (isNaN(numSquared) || isNaN(freqNum)) return false;
 
-        
-        map1[numSquared] = map1[numSquared] ? map1[numSquared] += 1 : 1;
-
-        map2[freqNum] = map2[freqNum] ? map2[freqNum] += 1 : 1;
+        map1[numSquared] = (map1[numSquared] || 0) + 1;
+        map2[freqNum] = (map2[freqNum] || 0) + 1;
     }
 
     for (key in map1) {
@@ -56,4 +54,4 @@ const arr4 = [1, 9];
 const arr5 = [1, 2, 1];
 const arr6 = [4, 4, 1];
 
-console.log(same(arr1, arr2))
+console.log(same(arr5, arr6));
