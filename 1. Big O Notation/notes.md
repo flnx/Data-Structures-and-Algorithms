@@ -16,8 +16,8 @@ O(n)
 function addUpTo(n) {
 let total = 0; 1 assignment
 
-    for (let i = 1; i <= n; i++) { =, <= / i++, These simple operations, they happen more as N grows. They scale with n
-        total += i;  <<<<<< n additions and n assignments (+ and =) as N grows
+    for (let i = 1; i <= n; i++) { =, <= / i++, These simple operations, they happen more as N grows. They scale with "N"
+        total += i;  // n additions and n assignments (+ and =) as N grows
         }
 
     return total;
