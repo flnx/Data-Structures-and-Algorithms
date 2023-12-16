@@ -14,8 +14,6 @@ function sumZero(arr) {
     while (left < right) {
         const sum = arr[left] + arr[right];
 
-        console.log(left, right);
-
         if (sum === 0) {
             return [arr[left], arr[right]];
         } else if(sum > 0) {
