@@ -7,6 +7,8 @@
 // that accepts a value and returns the index where the vlaue passed to the function is located.
 // If the value is not found, return -1
 
+// Time complexity - O(log n)
+
 function search(nums, target) {
     let left = 0;
     let right = nums.length - 1;
