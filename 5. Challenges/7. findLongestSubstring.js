@@ -1,40 +1,6 @@
 // Write a function called findLongestSubstring,
 // which accepts a string and returns the length of the longest substring with all distinct characters.
 
-// function findLongestSubstring(str) {
-//     if (str.length === 0) return 0;
-
-//     let len = 0;
-//     let currentBest = 1;
-
-//     let left = 0;
-//     let right = 0;
-
-//     let map = {};
-
-//     while (right < str.length) {
-//         let currentChar = str[right];
-
-//         if (map[currentChar]) {
-//             left = map[currentChar] + 1;
-//             right = left;
-//             currentChar = str[right];
-//             map = {};
-//             currentBest = 1;
-//         } else {
-//             currentBest++;
-//         }
-
-//         map[currentChar] = right;
-//         right++;
-
-//         len = Math.max(len, currentBest);
-//     }
-
-//     // add whatever parameters you deem necessary - good luck!
-//     return len;
-// }
-
 function findLongestSubstring(str) {
     if (str.length === 0) return 0;
 
@@ -43,7 +9,6 @@ function findLongestSubstring(str) {
 
     let left = 0;
     let right = 0;
-
     let map = {};
 
     while (right < str.length) {
@@ -95,24 +60,47 @@ function findLongestSubstring3(str) {
     let longest = 0;
     let seen = {};
     let start = 0;
-   
+
     for (let i = 0; i < str.length; i++) {
-      let char = str[i];
-      if (seen[char]) {
-        start = Math.max(start, seen[char]);
-      }
-      // index - beginning of substring + 1 (to include current in count)
-      longest = Math.max(longest, i - start + 1);
-      // store the index of the next char so as to not double count
-      seen[char] = i + 1;
+        let char = str[i];
+
+        if (seen[char]) {
+            start = Math.max(start, seen[char]);
+        }
+
+        // index - beginning of substring + 1 (to include current in count)
+        longest = Math.max(longest, i - start + 1);
+        // store the index of the next char so as to not double count
+        seen[char] = i + 1;
     }
     return longest;
-  }
+}
 
-const r1 = findLongestSubstring(''); // 0
-const r2 = findLongestSubstring('rithmschool'); // 7
-const r3 = findLongestSubstring('thisisawesome'); // 6
-const r4 = findLongestSubstring('thecatinthehat'); // 7
-const r5 = findLongestSubstring('bbbbbb'); // 1
-const r6 = findLongestSubstring('longestsubstring'); // 8
-const r7 = findLongestSubstring('thisishowwedoit'); // 6
+const r1 = findLongestSubstring4(''); // 0
+const r4 = findLongestSubstring4('thecatinthehat'); // 7
+const r5 = findLongestSubstring4('bbbbbb'); // 1
+const r6 = findLongestSubstring4('longestsubstring'); // 8
+
+const r3 = findLongestSubstring4('thisisawesome'); // 6
+const r2 = findLongestSubstring4('rithmschool'); // 7
+const r7 = findLongestSubstring4('thisishowwedoit'); // 6
+
+function findLongestSubstring4(str) {
+    let maxLen = 0;
+    let map = {};
+    let left = 0;
+
+    for (let i = 0; i < str.length; i++) {
+        const char = str[i];
+
+        if (map[char] !== undefined) {
+            left = Math.max(map[char] + 1, left);
+        }
+
+        maxLen = Math.max(maxLen, i - left + 1);
+
+        map[char] = i;
+    }
+
+    return maxLen;
+}
