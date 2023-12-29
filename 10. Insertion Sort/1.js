@@ -16,10 +16,6 @@ function insertionSort(arr) {
     return arr;
 }
 
-// insertionSort([1, 5, 2, 3, 4, 6, 7, 9, 8]);
-// insertionSort([6, 2, 3, 4, 5, 1]);
 const r3 = insertionSort([2, 6, 3, 4, 5, 1]);
-// [2, 6, 3, 4, 5, 1]
-// [2, 6, 3, 4, 5, 1]
 
 console.log(r3);
