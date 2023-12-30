@@ -7,7 +7,6 @@ function insertionSort(arr) {
         while (j >= 0 && arr[j] > current) {
             arr[j + 1] = arr[j];
             j--;
-            console.log(i, arr);
         }
 
         arr[j + 1] = current;
