@@ -10,14 +10,6 @@
 //     -100 <= Node.val <= 100
 //     Both list1 and list2 are sorted in non-decreasing order.
 
-// const r1 = mergeTwoLists([1, 2, 4], [1, 3, 4]); // [1,1,2,3,4,4]
-// const r2 = mergeTwoLists([], []); // []
-// const r3 = mergeTwoLists([], [0]); // [0]
-
-// console.log(r1);
-// console.log(r2);
-// console.log(r3);
-
 // Definition for singly-linked list node
 function ListNode(val, next) {
     this.val = val === undefined ? 0 : val;
@@ -28,10 +20,30 @@ function ListNode(val, next) {
 const list1 = new ListNode(1, new ListNode(3, new ListNode(5)));
 const list2 = new ListNode(2, new ListNode(4, new ListNode(6)));
 
+const r1 = mergeTwoLists(list1, list2);
+console.log(r1);
 
-const r = mergeTwoLists(list1, list2);
-
-// Main function to merge two sorted linked lists
 function mergeTwoLists(list1, list2) {
-   //
+    let dummy = new ListNode();
+    let current = dummy;
+
+    while (list1 !== null && list2 !== null) {
+        if (list1.val < list2.val) {
+            current.next = list1;
+            list1 = list1.next;
+        } else {
+            current.next = list2;
+            list2 = list2.next;
+        }
+
+        current = current.next;
+    }
+
+    if (list1 !== null) {
+        current.next = list1;
+    } else {
+        current.next = list2;
+    }
+
+    return dummy.next;
 }
