@@ -70,7 +70,7 @@ class SinglyLinkedList {
     if (!this.head) {
       this.tail = newNode;
     }
-    
+
     newNode.next = this.head;
     this.head = newNode;
     this.length++;
@@ -82,7 +82,7 @@ class SinglyLinkedList {
     if (typeof index !== 'number' || index > this.length - 1 || index < 0) {
       return null;
     }
-    
+
     let currentPosition = 0;
     let current = this.head;
 
@@ -94,6 +94,20 @@ class SinglyLinkedList {
     return current;
   }
 
+  setElement(val, index) {
+    if (typeof index !== 'number' || index > this.length - 1 || index < 0) {
+      return null;
+    }
+
+    let element = this.getElement(index);
+
+    if (!element) {
+      return null;
+    }
+
+    element.val = val;
+    return element;
+  }
 }
 
 const list = new SinglyLinkedList();
@@ -102,11 +116,10 @@ list.push(2);
 list.push(3);
 list.push(4);
 list.push(5);
-// list.pop();
-// list.shift();
-// list.unshift(5)
-const result = list.getElement(1);
+list.pop();
+list.shift();
+list.unshift(5)
 
-
+const result = list.setElement('LoL', 0)
 
 console.log(result);
