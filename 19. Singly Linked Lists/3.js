@@ -95,10 +95,6 @@ class SinglyLinkedList {
   }
 
   set(val, index) {
-    if (typeof index !== 'number' || index > this.length - 1 || index < 0) {
-      return false;
-    }
-
     let node = this.get(index);
 
     if (!node) {
