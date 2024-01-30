@@ -80,7 +80,7 @@ class SinglyLinkedList {
 
   get(index) {
     if (typeof index !== 'number' || index > this.length - 1 || index < 0) {
-      return null;
+      return false;
     }
 
     let currentPosition = 0;
@@ -96,13 +96,13 @@ class SinglyLinkedList {
 
   set(val, index) {
     if (typeof index !== 'number' || index > this.length - 1 || index < 0) {
-      return null;
+      return false;
     }
 
     let node = this.get(index);
 
     if (!node) {
-      return null;
+      return false;
     }
 
     node.val = val;
