@@ -77,16 +77,36 @@ class SinglyLinkedList {
 
     return this;
   }
+
+  getElement(index) {
+    if (typeof index !== 'number' || index > this.length - 1 || index < 0) {
+      return null;
+    }
+    
+    let currentPosition = 0;
+    let current = this.head;
+
+    while (currentPosition < index) {
+      currentPosition++;
+      current = current.next;
+    }
+
+    return current;
+  }
+
 }
 
 const list = new SinglyLinkedList();
 list.push(1);
 list.push(2);
-list.push(2);
 list.push(3);
 list.push(4);
-list.pop();
-list.shift();
-list.unshift(5)
+list.push(5);
+// list.pop();
+// list.shift();
+// list.unshift(5)
+const result = list.getElement(1);
 
-console.log(list);
+
+
+console.log(result);
