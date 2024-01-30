@@ -52,7 +52,7 @@ class SinglyLinkedList {
 
   shift() {
     if (!this.head) return;
-    
+
     const current = this.head;
     this.head = current.next;
     this.length--;
@@ -60,17 +60,33 @@ class SinglyLinkedList {
     if (this.length === 0) {
       this.tail = null;
     }
-    
+
     return current;
+  }
+
+  unshift(val) {
+    const newNode = new Node(val);
+
+    if (!this.head) {
+      this.tail = newNode;
+    }
+    
+    newNode.next = this.head;
+    this.head = newNode;
+    this.length++;
+
+    return this;
   }
 }
 
 const list = new SinglyLinkedList();
 list.push(1);
 list.push(2);
+list.push(2);
 list.push(3);
 list.push(4);
 list.pop();
 list.shift();
+list.unshift(5)
 
 console.log(list);
