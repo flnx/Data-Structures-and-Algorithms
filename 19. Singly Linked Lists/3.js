@@ -51,7 +51,7 @@ class SinglyLinkedList {
   }
 
   shift() {
-    if (!this.head) return;
+    if (!this.head) return false;
 
     const current = this.head;
     this.head = current.next;
@@ -80,6 +80,7 @@ class SinglyLinkedList {
 
   checkAllNodes() {
     let current = this.head;
+
     while (current) {
       console.log(current.val);
       current = current.next;
@@ -114,19 +115,12 @@ class SinglyLinkedList {
   }
 
   insert(index, val) {
-    if (typeof index !== 'number' || index > this.length || index < 0) {
+    if (typeof index != 'number' || index > this.length || index < 0) {
       return false;
     }
 
-    if (index === 0) {
-      this.unshift(val);
-      return true;
-    }
-
-    if (index === this.length) {
-      this.push(val);
-      return true;
-    }
+    if (index === 0) return !!this.unshift(val);
+    if (index === this.length) return !!this.push(val);
 
     const newNode = new Node(val);
     const prevNode = this.get(index - 1);
@@ -138,6 +132,47 @@ class SinglyLinkedList {
 
     return true;
   }
+
+  remove(index) {
+    if (typeof index !== 'number' || index > this.length - 1 || index < 0) {
+      return false;
+    }
+
+    if (index == 0) return this.shift();
+    if (index == this.length - 1) return this.pop();
+
+    const prevNode = this.get(index - 1);
+    const nodeToRemove = prevNode.next;
+
+    prevNode.next = nodeToRemove.next;
+    this.length--;
+
+    return nodeToRemove;
+  }
+
+  reverse() {
+    if (this.length <= 1) {
+      return false;
+    }
+
+    let prev = null;
+    let current = this.head;
+    let next = null;
+
+    while (current) {
+      next = current.next;
+      current.next = prev;
+      prev = current;
+      current = next;
+    }
+
+    // Swap head and tail
+    const temp = this.head;
+    this.head = this.tail;
+    this.tail = temp;
+
+    return true;
+  }
 }
 
 const list = new SinglyLinkedList();
@@ -146,7 +181,7 @@ list.push(2);
 list.push(3);
 list.push(4);
 list.push(5);
-const res = list.insert(3, 'new');
+// const res = list.insert(3, 'new');
 // list.push(4);
 // list.push(5);
 // list.pop();
@@ -154,5 +189,5 @@ const res = list.insert(3, 'new');
 // list.unshift(5);
 
 // const result = list.set('LoL', 0);
-
-console.log(list.checkAllNodes());
+list.reverse();
+list.checkAllNodes();
