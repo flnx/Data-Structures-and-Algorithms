@@ -128,19 +128,12 @@ class SinglyLinkedList {
       return true;
     }
 
-    let counter = 0;
-    let prev = null;
-    let current = this.head;
-
-    while (counter < index) {
-      prev = current;
-      current = current.next;
-      counter++;
-    }
-
     const newNode = new Node(val);
-    newNode.next = current;
-    prev.next = newNode;
+    const prevNode = this.get(index - 1);
+
+    newNode.next = prevNode.next;
+    prevNode.next = newNode;
+
     this.length++;
 
     return true;
@@ -151,8 +144,9 @@ const list = new SinglyLinkedList();
 list.push(1);
 list.push(2);
 list.push(3);
-const res = list.insert(1, 'new');
-console.log(res)
+list.push(4);
+list.push(5);
+const res = list.insert(3, 'new');
 // list.push(4);
 // list.push(5);
 // list.pop();
