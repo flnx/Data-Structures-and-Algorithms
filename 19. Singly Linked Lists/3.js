@@ -78,6 +78,14 @@ class SinglyLinkedList {
     return this;
   }
 
+  checkAllNodes() {
+    let current = this.head;
+    while (current) {
+      console.log(current.val);
+      current = current.next;
+    }
+  }
+
   get(index) {
     if (typeof index !== 'number' || index > this.length - 1 || index < 0) {
       return false;
@@ -104,18 +112,53 @@ class SinglyLinkedList {
     node.val = val;
     return true;
   }
+
+  insert(index, val) {
+    if (typeof index !== 'number' || index > this.length || index < 0) {
+      return false;
+    }
+
+    if (index === 0) {
+      this.unshift(val);
+      return true;
+    }
+
+    if (index === this.length) {
+      this.push(val);
+      return true;
+    }
+
+    let counter = 0;
+    let prev = null;
+    let current = this.head;
+
+    while (counter < index) {
+      prev = current;
+      current = current.next;
+      counter++;
+    }
+
+    const newNode = new Node(val);
+    newNode.next = current;
+    prev.next = newNode;
+    this.length++;
+
+    return true;
+  }
 }
 
 const list = new SinglyLinkedList();
 list.push(1);
 list.push(2);
 list.push(3);
-list.push(4);
-list.push(5);
-list.pop();
-list.shift();
-list.unshift(5);
+const res = list.insert(1, 'new');
+console.log(res)
+// list.push(4);
+// list.push(5);
+// list.pop();
+// list.shift();
+// list.unshift(5);
 
-const result = list.set('LoL', 0);
+// const result = list.set('LoL', 0);
 
-console.log(result);
+console.log(list.checkAllNodes());
