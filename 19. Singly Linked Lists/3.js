@@ -78,13 +78,16 @@ class SinglyLinkedList {
     return this;
   }
 
-  checkAllNodes() {
+  print() {
+    const arr = [];
     let current = this.head;
 
     while (current) {
-      console.log(current.val);
+      arr.push(current.val);
       current = current.next;
     }
+
+    console.log(arr);
   }
 
   get(index) {
@@ -152,7 +155,7 @@ class SinglyLinkedList {
 
   reverse() {
     if (this.length <= 1) {
-      return false;
+      return this;
     }
 
     let prev = null;
@@ -162,25 +165,27 @@ class SinglyLinkedList {
     while (current) {
       next = current.next;
       current.next = prev;
+
       prev = current;
+
       current = next;
     }
 
-    // Swap head and tail
     const temp = this.head;
     this.head = this.tail;
     this.tail = temp;
 
-    return true;
+    return this;
   }
 }
 
 const list = new SinglyLinkedList();
-list.push(1);
-list.push(2);
-list.push(3);
-list.push(4);
-list.push(5);
+list.push(50);
+list.push(100);
+list.push(200);
+list.push(300);
+list.push(400);
+list.push(500);
 // const res = list.insert(3, 'new');
 // list.push(4);
 // list.push(5);
@@ -190,4 +195,4 @@ list.push(5);
 
 // const result = list.set('LoL', 0);
 list.reverse();
-list.checkAllNodes();
+list.print();
