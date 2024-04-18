@@ -73,12 +73,39 @@ class LinkedList {
     this.length--;
     return this;
   }
+
+  remove(index) {
+    if (this.length === 0 || index < 0 || index > this.length - 1) return this;
+
+    if (index === 0) {
+      this.shift();
+      return this;
+    }
+
+    if (index === this.length - 1) {
+      this.pop();
+      return this;
+    }
+
+    let current = this.head;
+
+    for (let i = 1; i <= index; i++) {
+      current = current.next;
+    }
+
+    current.prev.next = current.next;
+    current.next.prev = current.prev;
+
+    this.length--;
+  }
 }
 
 const list = new LinkedList();
 
 list.push(1);
 list.push(2);
+list.push(3);
 
-list.shift();
+list.remove(1);
+
 console.log(list);
