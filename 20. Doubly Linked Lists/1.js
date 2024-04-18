@@ -58,17 +58,27 @@ class LinkedList {
     this.length--;
     return this;
   }
+
+  shift() {
+    if (this.length === 0) return this;
+
+    if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+    } else {
+      this.head = this.head.next;
+      this.head.prev = null;
+    }
+
+    this.length--;
+    return this;
+  }
 }
 
 const list = new LinkedList();
 
 list.push(1);
 list.push(2);
-list.push(3);
-list.push(4);
-list.push(5);
 
-list.pop();
-list.pop();
-list.pop();
+list.shift();
 console.log(list);
