@@ -74,6 +74,18 @@ class LinkedList {
     return this;
   }
 
+  print() {
+    const arr = [];
+    let current = this.head;
+
+    while (current) {
+      arr.push(current.val);
+      current = current.next;
+    }
+
+    console.log(arr);
+  }
+
   remove(index) {
     if (this.length === 0 || index < 0 || index > this.length - 1) return this;
 
@@ -99,6 +111,30 @@ class LinkedList {
     this.length--;
   }
 
+  get(index) {
+    if (this.length === 0 || index < 0 || index >= this.length) return this;
+
+    let current = this.head;
+
+    for (let i = 0; i < index; i++) {
+      current = current.next;
+    }
+
+    return current;
+  }
+
+  set(index, val) {
+    const node = this.get(index);
+
+    if (!node) return false;
+
+    node.val = val;
+
+    console.log(node);
+
+    return true;
+  }
+
   insert(index, val) {
     if (index < 0 || index > this.length) return this;
 
@@ -112,24 +148,21 @@ class LinkedList {
       return this;
     }
 
-    
     let current = this.head;
-        
+
     for (let i = 1; i <= index; i++) {
       current = current.next;
     }
-    
+
     const newNode = new Node(val);
     newNode.prev = current.prev;
     newNode.next = current;
     current.prev.next = newNode;
     current.prev = newNode;
-    
+
     this.length++;
     return this;
   }
-
-
 }
 
 const list = new LinkedList();
@@ -137,7 +170,3 @@ const list = new LinkedList();
 list.insert(0, 'val 1');
 list.insert(1, 'val 2');
 list.insert(2, 'val 3');
-list.insert(2, 'TEST');
-
-
-console.log(list);
