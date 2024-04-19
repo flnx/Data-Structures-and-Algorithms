@@ -163,10 +163,36 @@ class LinkedList {
     this.length++;
     return this;
   }
+
+  reverse() {
+    if (this.length < 2) return this;
+
+    let prev = null;
+    let current = this.head;
+    let next = null;
+
+    for (let i = 0; i < this.length; i++) {
+      next = current.next;
+
+      current.next = prev;
+      current.prev = next;
+
+      prev = current;
+
+      current = next;
+    }
+
+    const temp = this.head;
+    this.head = this.tail;
+    this.tail = temp;
+
+    return this;
+  }
 }
 
 const list = new LinkedList();
 
 list.insert(0, 'val 1');
 list.insert(1, 'val 2');
-list.insert(2, 'val 3');
+
+list.reverse();
