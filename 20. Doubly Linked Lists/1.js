@@ -42,36 +42,43 @@ class LinkedList {
     this.head = newNode;
 
     this.length++;
+    return this;
   }
 
   pop() {
-    if (this.length === 0) return this;
+    if (this.length === 0) return;
+
+    const poppedNode = this.tail;
 
     if (this.length === 1) {
       this.head = null;
       this.tail = null;
     } else {
-      this.tail = this.tail.prev;
+      this.tail = poppedNode.prev;
       this.tail.next = null;
+      poppedNode.prev = null;
     }
 
     this.length--;
-    return this;
+    return poppedNode;
   }
 
   shift() {
-    if (this.length === 0) return this;
+    if (this.length === 0) return;
+
+    const oldHead = this.head;
 
     if (this.length === 1) {
       this.head = null;
       this.tail = null;
     } else {
-      this.head = this.head.next;
+      this.head = oldHead.next;
       this.head.prev = null;
+      oldHead.next = null;
     }
 
     this.length--;
-    return this;
+    return oldHead;
   }
 
   print() {
