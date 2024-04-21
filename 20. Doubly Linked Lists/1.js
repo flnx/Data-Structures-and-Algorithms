@@ -97,25 +97,20 @@ class LinkedList {
     if (this.length === 0 || index < 0 || index > this.length - 1) return this;
 
     if (index === 0) {
-      this.shift();
-      return this;
+      return this.shift();
     }
 
     if (index === this.length - 1) {
-      this.pop();
-      return this;
+      return this.pop();
     }
 
-    let current = this.head;
-
-    for (let i = 1; i <= index; i++) {
-      current = current.next;
-    }
+    let current = this.get(index);
 
     current.prev.next = current.next;
     current.next.prev = current.prev;
 
     this.length--;
+    return current;
   }
 
   get(index) {
@@ -150,16 +145,14 @@ class LinkedList {
   }
 
   insert(index, val) {
-    if (index < 0 || index > this.length) return this;
+    if (index < 0 || index > this.length) return false;
 
     if (index === 0) {
-      this.unshift(val);
-      return this;
+      return this.unshift(val);
     }
 
     if (index === this.length) {
-      this.push(val);
-      return this;
+      return this.push(val);
     }
 
     let current = this.get(index);
