@@ -146,9 +146,6 @@ class LinkedList {
     if (!node) return false;
 
     node.val = val;
-
-    console.log(node);
-
     return true;
   }
 
@@ -165,13 +162,9 @@ class LinkedList {
       return this;
     }
 
-    let current = this.head;
-
-    for (let i = 1; i <= index; i++) {
-      current = current.next;
-    }
-
+    let current = this.get(index);
     const newNode = new Node(val);
+
     newNode.prev = current.prev;
     newNode.next = current;
     current.prev.next = newNode;
@@ -213,4 +206,6 @@ list.insert(0, 'val 1');
 list.insert(1, 'val 2');
 list.insert(2, 'val 3');
 
-list.reverse();
+list.print()
+
+// list.reverse();
