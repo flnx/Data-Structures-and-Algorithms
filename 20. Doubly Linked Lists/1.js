@@ -125,13 +125,11 @@ class LinkedList {
 
     if (index < this.length / 2) {
       current = this.head;
-      console.log('Left')
       
       for (let i = 0; i < index; i++) {
         current = current.next;
       }
     } else {
-      console.log('Right')
       current = this.tail;
 
       for (let i = this.length - 1; i > index; i--) {
