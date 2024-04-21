@@ -119,12 +119,24 @@ class LinkedList {
   }
 
   get(index) {
-    if (this.length === 0 || index < 0 || index >= this.length) return this;
+    if (this.length === 0 || index < 0 || index >= this.length) return null;
 
-    let current = this.head;
+    let current;
 
-    for (let i = 0; i < index; i++) {
-      current = current.next;
+    if (index < this.length / 2) {
+      current = this.head;
+      console.log('Left')
+      
+      for (let i = 0; i < index; i++) {
+        current = current.next;
+      }
+    } else {
+      console.log('Right')
+      current = this.tail;
+
+      for (let i = this.length - 1; i > index; i--) {
+        current = current.prev;
+      }
     }
 
     return current;
@@ -201,5 +213,6 @@ const list = new LinkedList();
 
 list.insert(0, 'val 1');
 list.insert(1, 'val 2');
+list.insert(2, 'val 3');
 
 list.reverse();
