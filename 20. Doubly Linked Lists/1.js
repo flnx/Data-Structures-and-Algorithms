@@ -94,7 +94,7 @@ class LinkedList {
   }
 
   remove(index) {
-    if (this.length === 0 || index < 0 || index > this.length - 1) return this;
+    if (this.length === 0 || index < 0 || index > this.length - 1) return;
 
     if (index === 0) {
       return this.shift();
@@ -120,7 +120,7 @@ class LinkedList {
 
     if (index < this.length / 2) {
       current = this.head;
-      
+
       for (let i = 0; i < index; i++) {
         current = current.next;
       }
@@ -193,12 +193,28 @@ class LinkedList {
   }
 }
 
-const list = new LinkedList();
+const doublyLinkedList = new LinkedList();
 
-list.insert(0, 'val 1');
-list.insert(1, 'val 2');
-list.insert(2, 'val 3');
+console.log(doublyLinkedList.unshift(5)); //) doublyLinkedList
+console.log(doublyLinkedList.length); //) 1
+console.log(doublyLinkedList.head.val); // 5
+console.log(doublyLinkedList.tail.val); // 5
+console.log(doublyLinkedList.unshift(10)); // doublyLinkedList
+console.log(doublyLinkedList.length); // 2
+console.log(doublyLinkedList.head.val); // 10
+console.log(doublyLinkedList.head.next.val); // 5
+console.log(doublyLinkedList.tail.val); // 5
+console.log(doublyLinkedList.unshift(15)); // doublyLinkedList
+console.log(doublyLinkedList.length); //3
+console.log(doublyLinkedList.head.val); // 15
+console.log(doublyLinkedList.tail.val); // 5
+console.log(doublyLinkedList.head.next.next.val); // 5
 
-list.print()
-
-// list.reverse();
+console.log(doublyLinkedList.shift().val); // 15
+console.log(doublyLinkedList.length); //) 2
+console.log(doublyLinkedList.shift().val); // 10
+console.log(doublyLinkedList.length); //) 1
+console.log(doublyLinkedList.shift().val); // 5
+console.log(doublyLinkedList.length); //) 0
+console.log(doublyLinkedList.pop()); // undefined
+console.log(doublyLinkedList.length); // 0
