@@ -20,14 +20,18 @@ function searchInsert(nums, target) {
   return left;
 }
 
-let nums = [1, 3, 5, 6];
-let target = 5;
+let nums = [1, 3, 5, 6, 15, 21, 30, 40, 55, 100];
+let target = 31;
 console.log(searchInsert(nums, target));
 
-nums = [1, 3, 5, 6];
-target = 2;
-console.log(searchInsert(nums, target));
+// let nums = [1, 3, 5, 6];
+// let target = 2;
+// console.log(searchInsert(nums, target));
 
-nums = [1, 3, 5, 6];
-target = 7;
-console.log(searchInsert(nums, target));
+// nums = [1, 3, 5, 6];
+// target = 2;
+// console.log(searchInsert(nums, target));
+
+// nums = [1, 3, 5, 6];
+// target = 7;
+// console.log(searchInsert(nums, target));
